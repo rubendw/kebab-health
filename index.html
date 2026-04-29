@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebab: The Ultimate Health Food</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f0e0c;
+      color: #f5f0e8;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #b5451b 0%, #e8722a 50%, #f0a050 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '🌯';
+      font-size: 120px;
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      opacity: 0.15;
+      transform: rotate(20deg);
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 540px;
+      margin-inline: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e8722a;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    .card {
+      background: #1a1815;
+      border: 1px solid #2a2520;
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #e8722a;
+    }
+
+    .card .icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f0a050;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #c0b8a8;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 64px;
+    }
+
+    .stat {
+      background: linear-gradient(135deg, #1a1815, #221e18);
+      border: 1px solid #2a2520;
+      border-radius: 12px;
+      padding: 20px 32px;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .stat .number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #e8722a;
+    }
+
+    .stat .label {
+      font-size: 0.8rem;
+      color: #a09080;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #1a1210, #221510);
+      border-left: 4px solid #e8722a;
+      border-radius: 0 12px 12px 0;
+      padding: 24px 28px;
+      margin-bottom: 64px;
+      font-style: italic;
+      color: #d0c8b8;
+      font-size: 1.05rem;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: #e8722a;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid #1a1815;
+      color: #605850;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #e8722a;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kebab Is Good For You</h1>
+  <p>The science-backed case for the world's most underrated health food.</p>
+  <span class="badge">Nutritional Deep Dive 2026</span>
+</header>
+
+<main>
+
+  <h2 class="section-title">Why Kebab Delivers</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">💪</div>
+      <h3>High-Quality Protein</h3>
+      <p>A classic doner or shish kebab packs 25–35 g of lean protein per serving, essential for muscle repair, satiety, and metabolic health.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌿</div>
+      <h3>Herb & Spice Antioxidants</h3>
+      <p>Cumin, sumac, turmeric, and parsley—staples of kebab marinades—are rich in polyphenols that fight oxidative stress and inflammation.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🫀</div>
+      <h3>Heart-Friendly Fats</h3>
+      <p>Lamb and chicken trimmed for kebab contain a favorable mono-unsaturated fat profile. Olive oil marinades add an extra cardioprotective boost.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🥗</div>
+      <h3>Fiber-Rich Accompaniments</h3>
+      <p>Wrap that kebab in a wholemeal flatbread and pile on the salad: tomato, cucumber, red onion, and cabbage add gut-friendly prebiotic fiber.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🦴</div>
+      <h3>Bone-Supporting Minerals</h3>
+      <p>Red meat kebabs supply heme iron, zinc, and phosphorus — nutrients critical for bone density, immune function, and oxygen transport.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>B-Vitamins for the Brain</h3>
+      <p>Lamb and beef are among the best natural sources of B12 and B6, vitamins essential for neurological health and reducing homocysteine levels.</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">By the Numbers</h2>
+
+  <div class="stats">
+    <div class="stat"><div class="number">~30g</div><div class="label">Protein / serving</div></div>
+    <div class="stat"><div class="number">12</div><div class="label">Essential amino acids</div></div>
+    <div class="stat"><div class="number">3×</div><div class="label">More zinc than chicken</div></div>
+    <div class="stat"><div class="number">~400</div><div class="label">kcal (shish + salad)</div></div>
+    <div class="stat"><div class="number">7+</div><div class="label">Anti-inflammatory spices</div></div>
+  </div>
+
+  <blockquote class="quote">
+    "The Mediterranean diet — of which grilled meats, olive oil, and fresh vegetables are a cornerstone — is consistently associated with reduced risk of cardiovascular disease, type 2 diabetes, and all-cause mortality."
+    <cite>— Adapted from the PREDIMED Study, New England Journal of Medicine</cite>
+  </blockquote>
+
+  <h2 class="section-title">Tips for a Healthier Kebab</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🔥</div>
+      <h3>Go Shish Over Doner</h3>
+      <p>Shish (skewered chunks) tends to be leaner than pressed doner. Ask for extra salad and go easy on creamy sauces.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🫙</div>
+      <h3>Yogurt Sauce > Mayo</h3>
+      <p>Swap garlic mayo for a tzatziki or plain yogurt sauce. You get probiotics and calcium without the saturated fat hit.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🌾</div>
+      <h3>Wholemeal Wrap</h3>
+      <p>A wholemeal flatbread instead of white lowers the glycemic load and adds an extra gram of fiber per serving.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>Made with 🌯 &nbsp;·&nbsp; Deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+</footer>
+
+</body>
+</html>
