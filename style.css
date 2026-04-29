@@ -328,6 +328,56 @@ main {
 }
 .tip p { font-size: 0.9rem; color: #a09080; }
 
+/* ── references ── */
+.references {
+  list-style: none;
+  counter-reset: ref;
+  margin-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.references li {
+  counter-increment: ref;
+  background: linear-gradient(145deg, #161210, #1e1812);
+  border: 1px solid #2e2218;
+  border-radius: 12px;
+  padding: 16px 20px 16px 52px;
+  font-size: 0.88rem;
+  color: #a09080;
+  line-height: 1.6;
+  position: relative;
+}
+.references li::before {
+  content: counter(ref);
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #e8722a;
+  background: #e8722a18;
+  border: 1px solid #e8722a33;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.references li em { color: #c0b0a0; font-style: italic; }
+.references li a { color: #e8722a; text-decoration: none; }
+.references li a:hover { text-decoration: underline; }
+
+sup a {
+  color: #e8722a;
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 1px;
+}
+sup a:hover { text-decoration: underline; }
+
 /* ── footer ── */
 footer {
   position: relative;
