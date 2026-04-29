@@ -5,259 +5,530 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kebab: The Ultimate Health Food</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #0f0e0c;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: #080705;
       color: #f5f0e8;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    header {
-      background: linear-gradient(135deg, #b5451b 0%, #e8722a 50%, #f0a050 100%);
-      padding: 80px 24px 60px;
-      text-align: center;
-      position: relative;
+    /* ── floating kebab bg ── */
+    .floaters {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       overflow: hidden;
     }
-
-    header::before {
-      content: '🌯';
-      font-size: 120px;
+    .floater {
       position: absolute;
-      top: -20px;
-      right: -20px;
-      opacity: 0.15;
-      transform: rotate(20deg);
+      font-size: 2.2rem;
+      opacity: 0.07;
+      animation: drift linear infinite;
+      user-select: none;
+    }
+    @keyframes drift {
+      from { transform: translateY(110vh) rotate(0deg); }
+      to   { transform: translateY(-20vh) rotate(360deg); }
+    }
+
+    /* ── header ── */
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 100px 24px 80px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #c94a1a55 0%, transparent 70%),
+        linear-gradient(180deg, #1a0e08 0%, #080705 100%);
+      border-bottom: 1px solid #2a1a10;
+    }
+
+    .hero-kebabs {
+      font-size: clamp(3rem, 8vw, 6rem);
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      filter: drop-shadow(0 0 24px #e8722a88);
+    }
+    .hero-kebabs span {
+      display: inline-block;
+      animation: wobble 3s ease-in-out infinite;
+    }
+    .hero-kebabs span:nth-child(2) { animation-delay: 0.4s; }
+    .hero-kebabs span:nth-child(3) { animation-delay: 0.8s; }
+    .hero-kebabs span:nth-child(4) { animation-delay: 1.2s; }
+    .hero-kebabs span:nth-child(5) { animation-delay: 1.6s; }
+    @keyframes wobble {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%       { transform: translateY(-10px) rotate(3deg); }
     }
 
     header h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -1px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, #ff9040, #ff5500, #ffcc44);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      line-height: 1.1;
     }
 
     header p {
-      margin-top: 12px;
+      margin-top: 16px;
       font-size: 1.2rem;
-      opacity: 0.9;
+      color: #c0a888;
       max-width: 540px;
       margin-inline: auto;
     }
 
     .badge {
-      display: inline-block;
-      margin-top: 20px;
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      background: linear-gradient(135deg, #e8722a22, #ff550011);
+      border: 1px solid #e8722a55;
       border-radius: 999px;
-      padding: 6px 18px;
+      padding: 8px 20px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
+      color: #f0a050;
       letter-spacing: 0.5px;
+      box-shadow: 0 0 20px #e8722a22;
     }
 
+    /* ── divider ── */
+    .kebab-divider {
+      text-align: center;
+      font-size: 1.6rem;
+      letter-spacing: 8px;
+      color: #e8722a44;
+      margin: 16px 0 48px;
+      user-select: none;
+    }
+
+    /* ── main ── */
     main {
-      max-width: 960px;
+      position: relative;
+      z-index: 1;
+      max-width: 1020px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 72px 24px;
     }
 
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .section-title span {
       color: #e8722a;
+    }
+    .section-sub {
+      text-align: center;
+      color: #806858;
+      font-size: 0.95rem;
       margin-bottom: 40px;
     }
 
+    /* ── benefit cards ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 64px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 72px;
     }
 
     .card {
-      background: #1a1815;
-      border: 1px solid #2a2520;
-      border-radius: 16px;
-      padding: 28px 24px;
-      transition: transform 0.2s, border-color 0.2s;
+      background: linear-gradient(145deg, #161210, #1e1812);
+      border: 1px solid #2e2218;
+      border-radius: 20px;
+      padding: 32px 26px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
     }
-
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, #e8722a11, transparent 60%);
+      pointer-events: none;
+    }
     .card:hover {
-      transform: translateY(-4px);
-      border-color: #e8722a;
+      transform: translateY(-6px) scale(1.01);
+      border-color: #e8722a88;
+      box-shadow: 0 16px 48px #e8722a22, 0 0 0 1px #e8722a22;
     }
 
     .card .icon {
-      font-size: 2.4rem;
-      margin-bottom: 14px;
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 2px 8px #e8722a44);
     }
 
     .card h3 {
       font-size: 1.1rem;
-      font-weight: 700;
-      color: #f0a050;
-      margin-bottom: 8px;
+      font-weight: 800;
+      color: #ffaa55;
+      margin-bottom: 10px;
     }
 
     .card p {
-      font-size: 0.95rem;
-      color: #c0b8a8;
+      font-size: 0.93rem;
+      color: #a09080;
+      line-height: 1.65;
     }
 
+    /* ── stats ── */
     .stats {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       justify-content: center;
-      margin-bottom: 64px;
+      margin-bottom: 72px;
     }
 
     .stat {
-      background: linear-gradient(135deg, #1a1815, #221e18);
-      border: 1px solid #2a2520;
-      border-radius: 12px;
-      padding: 20px 32px;
+      background: linear-gradient(145deg, #161210, #1e1812);
+      border: 1px solid #2e2218;
+      border-radius: 16px;
+      padding: 24px 36px;
       text-align: center;
-      min-width: 140px;
+      min-width: 150px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
-
+    .stat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px #e8722a1a;
+    }
+    .stat .kebab-mini {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      display: block;
+    }
     .stat .number {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #e8722a;
+      font-size: 2.4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff9040, #e85520);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
     }
-
     .stat .label {
-      font-size: 0.8rem;
-      color: #a09080;
+      font-size: 0.78rem;
+      color: #806858;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-top: 4px;
+      letter-spacing: 1px;
+      margin-top: 6px;
     }
 
+    /* ── quote ── */
+    .quote-wrap {
+      position: relative;
+      margin-bottom: 72px;
+    }
+    .quote-kebab {
+      position: absolute;
+      right: -10px;
+      top: -24px;
+      font-size: 5rem;
+      opacity: 0.12;
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
     .quote {
-      background: linear-gradient(135deg, #1a1210, #221510);
+      background: linear-gradient(135deg, #160e09, #1e1208);
+      border: 1px solid #2e1e10;
       border-left: 4px solid #e8722a;
-      border-radius: 0 12px 12px 0;
-      padding: 24px 28px;
-      margin-bottom: 64px;
+      border-radius: 0 20px 20px 0;
+      padding: 32px 36px;
       font-style: italic;
-      color: #d0c8b8;
-      font-size: 1.05rem;
+      color: #d0c0a8;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      box-shadow: inset 0 0 60px #e8722a08;
     }
-
     .quote cite {
       display: block;
-      margin-top: 10px;
+      margin-top: 14px;
       font-style: normal;
       font-size: 0.85rem;
       color: #e8722a;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    footer {
+    /* ── types section ── */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+    .type-card {
+      background: linear-gradient(145deg, #161210, #1e1812);
+      border: 1px solid #2e2218;
+      border-radius: 20px;
+      padding: 28px 20px;
       text-align: center;
-      padding: 40px 24px;
-      border-top: 1px solid #1a1815;
-      color: #605850;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    }
+    .type-card:hover {
+      transform: translateY(-5px);
+      border-color: #e8722a66;
+      box-shadow: 0 12px 40px #e8722a18;
+    }
+    .type-card .big-emoji {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 12px #e8722a55);
+    }
+    .type-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffaa55;
+      margin-bottom: 6px;
+    }
+    .type-card p {
+      font-size: 0.82rem;
+      color: #806858;
+    }
+
+    /* ── tips ── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 72px;
+    }
+    .tip {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: linear-gradient(145deg, #161210, #1e1812);
+      border: 1px solid #2e2218;
+      border-radius: 16px;
+      padding: 24px 22px;
+      transition: border-color 0.2s;
+    }
+    .tip:hover { border-color: #e8722a55; }
+    .tip .tip-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tip h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #ffaa55;
+      margin-bottom: 6px;
+    }
+    .tip p { font-size: 0.9rem; color: #a09080; }
+
+    /* ── footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid #1e1612;
+      color: #403830;
       font-size: 0.85rem;
     }
-
-    footer a {
-      color: #e8722a;
-      text-decoration: none;
+    .footer-kebabs {
+      font-size: 2rem;
+      letter-spacing: 6px;
+      margin-bottom: 16px;
+      display: block;
+      filter: grayscale(0.5);
     }
+    footer a { color: #e8722a; text-decoration: none; }
   </style>
 </head>
 <body>
 
+<!-- floating background kebabs -->
+<div class="floaters">
+  <span class="floater" style="left:5%;  animation-duration:18s; animation-delay:0s;   font-size:3rem;">🌯</span>
+  <span class="floater" style="left:15%; animation-duration:24s; animation-delay:3s;   font-size:1.8rem;">🥙</span>
+  <span class="floater" style="left:28%; animation-duration:20s; animation-delay:7s;   font-size:2.5rem;">🍢</span>
+  <span class="floater" style="left:42%; animation-duration:16s; animation-delay:1s;   font-size:2rem;">🌯</span>
+  <span class="floater" style="left:58%; animation-duration:22s; animation-delay:5s;   font-size:3rem;">🥙</span>
+  <span class="floater" style="left:70%; animation-duration:19s; animation-delay:9s;   font-size:1.6rem;">🍢</span>
+  <span class="floater" style="left:82%; animation-duration:26s; animation-delay:2s;   font-size:2.8rem;">🌯</span>
+  <span class="floater" style="left:92%; animation-duration:21s; animation-delay:6s;   font-size:2rem;">🥙</span>
+</div>
+
 <header>
-  <h1>Kebab Is Good For You</h1>
+  <div class="hero-kebabs">
+    <span>🌯</span><span>🥙</span><span>🍢</span><span>🥙</span><span>🌯</span>
+  </div>
+  <h1>Kebab Is Good<br>For You</h1>
   <p>The science-backed case for the world's most underrated health food.</p>
-  <span class="badge">Nutritional Deep Dive 2026</span>
+  <div><span class="badge">🔬 Nutritional Deep Dive 2026</span></div>
 </header>
 
 <main>
 
-  <h2 class="section-title">Why Kebab Delivers</h2>
+  <div class="kebab-divider">🌯 🥙 🍢 🥙 🌯</div>
+
+  <h2 class="section-title">Why <span>Kebab</span> Delivers</h2>
+  <p class="section-sub">Six hard-hitting reasons to eat more of it.</p>
 
   <div class="grid">
     <div class="card">
-      <div class="icon">💪</div>
+      <span class="icon">💪</span>
       <h3>High-Quality Protein</h3>
       <p>A classic doner or shish kebab packs 25–35 g of lean protein per serving, essential for muscle repair, satiety, and metabolic health.</p>
     </div>
     <div class="card">
-      <div class="icon">🌿</div>
+      <span class="icon">🌿</span>
       <h3>Herb & Spice Antioxidants</h3>
-      <p>Cumin, sumac, turmeric, and parsley—staples of kebab marinades—are rich in polyphenols that fight oxidative stress and inflammation.</p>
+      <p>Cumin, sumac, turmeric, and parsley — staples of kebab marinades — are rich in polyphenols that fight oxidative stress and inflammation.</p>
     </div>
     <div class="card">
-      <div class="icon">🫀</div>
+      <span class="icon">🫀</span>
       <h3>Heart-Friendly Fats</h3>
       <p>Lamb and chicken trimmed for kebab contain a favorable mono-unsaturated fat profile. Olive oil marinades add an extra cardioprotective boost.</p>
     </div>
     <div class="card">
-      <div class="icon">🥗</div>
+      <span class="icon">🥗</span>
       <h3>Fiber-Rich Accompaniments</h3>
-      <p>Wrap that kebab in a wholemeal flatbread and pile on the salad: tomato, cucumber, red onion, and cabbage add gut-friendly prebiotic fiber.</p>
+      <p>Wrap it in wholemeal flatbread and pile on the salad: tomato, cucumber, red onion, and cabbage add gut-friendly prebiotic fiber.</p>
     </div>
     <div class="card">
-      <div class="icon">🦴</div>
+      <span class="icon">🦴</span>
       <h3>Bone-Supporting Minerals</h3>
       <p>Red meat kebabs supply heme iron, zinc, and phosphorus — nutrients critical for bone density, immune function, and oxygen transport.</p>
     </div>
     <div class="card">
-      <div class="icon">🧠</div>
+      <span class="icon">🧠</span>
       <h3>B-Vitamins for the Brain</h3>
       <p>Lamb and beef are among the best natural sources of B12 and B6, vitamins essential for neurological health and reducing homocysteine levels.</p>
     </div>
   </div>
 
-  <h2 class="section-title">By the Numbers</h2>
+  <h2 class="section-title">By the <span>Numbers</span></h2>
+  <p class="section-sub">Per typical shish kebab + salad serving.</p>
 
   <div class="stats">
-    <div class="stat"><div class="number">~30g</div><div class="label">Protein / serving</div></div>
-    <div class="stat"><div class="number">12</div><div class="label">Essential amino acids</div></div>
-    <div class="stat"><div class="number">3×</div><div class="label">More zinc than chicken</div></div>
-    <div class="stat"><div class="number">~400</div><div class="label">kcal (shish + salad)</div></div>
-    <div class="stat"><div class="number">7+</div><div class="label">Anti-inflammatory spices</div></div>
+    <div class="stat"><span class="kebab-mini">🌯</span><div class="number">~30g</div><div class="label">Protein</div></div>
+    <div class="stat"><span class="kebab-mini">🥙</span><div class="number">12</div><div class="label">Amino acids</div></div>
+    <div class="stat"><span class="kebab-mini">🍢</span><div class="number">3×</div><div class="label">More zinc</div></div>
+    <div class="stat"><span class="kebab-mini">🌯</span><div class="number">~400</div><div class="label">kcal</div></div>
+    <div class="stat"><span class="kebab-mini">🥙</span><div class="number">7+</div><div class="label">Anti-inflam. spices</div></div>
   </div>
 
-  <blockquote class="quote">
-    "The Mediterranean diet — of which grilled meats, olive oil, and fresh vegetables are a cornerstone — is consistently associated with reduced risk of cardiovascular disease, type 2 diabetes, and all-cause mortality."
-    <cite>— Adapted from the PREDIMED Study, New England Journal of Medicine</cite>
-  </blockquote>
+  <div class="quote-wrap">
+    <div class="quote-kebab">🌯</div>
+    <blockquote class="quote">
+      "The Mediterranean diet — of which grilled meats, olive oil, and fresh vegetables are a cornerstone — is consistently associated with reduced risk of cardiovascular disease, type 2 diabetes, and all-cause mortality."
+      <cite>— Adapted from the PREDIMED Study, New England Journal of Medicine</cite>
+    </blockquote>
+  </div>
 
-  <h2 class="section-title">Tips for a Healthier Kebab</h2>
+  <h2 class="section-title">The <span>Kebab</span> Family</h2>
+  <p class="section-sub">Every style has its own nutritional strengths.</p>
 
-  <div class="grid">
-    <div class="card">
-      <div class="icon">🔥</div>
-      <h3>Go Shish Over Doner</h3>
-      <p>Shish (skewered chunks) tends to be leaner than pressed doner. Ask for extra salad and go easy on creamy sauces.</p>
+  <div class="types-grid">
+    <div class="type-card">
+      <span class="big-emoji">🌯</span>
+      <h4>Doner</h4>
+      <p>High protein, great for post-workout recovery. Choose chicken for a leaner cut.</p>
     </div>
-    <div class="card">
-      <div class="icon">🫙</div>
-      <h3>Yogurt Sauce > Mayo</h3>
-      <p>Swap garlic mayo for a tzatziki or plain yogurt sauce. You get probiotics and calcium without the saturated fat hit.</p>
+    <div class="type-card">
+      <span class="big-emoji">🍢</span>
+      <h4>Shish</h4>
+      <p>Lean grilled chunks — minimal fat loss in cooking. The athlete's choice.</p>
     </div>
-    <div class="card">
-      <div class="icon">🌾</div>
-      <h3>Wholemeal Wrap</h3>
-      <p>A wholemeal flatbread instead of white lowers the glycemic load and adds an extra gram of fiber per serving.</p>
+    <div class="type-card">
+      <span class="big-emoji">🥙</span>
+      <h4>Adana</h4>
+      <p>Spiced minced lamb. Rich in iron and zinc with metabolism-boosting chili.</p>
+    </div>
+    <div class="type-card">
+      <span class="big-emoji">🌯</span>
+      <h4>Souvlaki</h4>
+      <p>Greek-style pork or chicken. High in B vitamins, served with probiotic tzatziki.</p>
+    </div>
+    <div class="type-card">
+      <span class="big-emoji">🍢</span>
+      <h4>Seekh</h4>
+      <p>South Asian minced kebab, grilled on skewers. Loaded with aromatic anti-inflammatory spices.</p>
     </div>
   </div>
+
+  <h2 class="section-title">Tips for a <span>Healthier</span> Kebab</h2>
+  <p class="section-sub">Small swaps, big nutritional wins.</p>
+
+  <div class="tips-grid">
+    <div class="tip">
+      <span class="tip-icon">🍢</span>
+      <div>
+        <h3>Go Shish Over Doner</h3>
+        <p>Shish (skewered chunks) tends to be leaner than pressed doner. Ask for extra salad and go easy on creamy sauces.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🥛</span>
+      <div>
+        <h3>Yogurt Sauce > Mayo</h3>
+        <p>Swap garlic mayo for tzatziki or plain yogurt. You get probiotics and calcium without the saturated fat hit.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌾</span>
+      <div>
+        <h3>Wholemeal Wrap</h3>
+        <p>A wholemeal flatbread instead of white lowers the glycemic load and adds an extra gram of fiber per serving.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🌯</span>
+      <div>
+        <h3>Load Up the Salad</h3>
+        <p>More cabbage, tomato, and onion means more fiber, vitamin C, and antioxidants. Don't be shy with the greens.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🫒</span>
+      <div>
+        <h3>Olive Oil Marinade</h3>
+        <p>Ask for meat marinated in olive oil and lemon — it keeps it moist, slashes oxidation during grilling, and adds polyphenols.</p>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-icon">🥙</span>
+      <div>
+        <h3>Skip the Chips</h3>
+        <p>Trade the side of chips for extra tabbouleh or a fattoush salad. You'll halve the calorie count and double the micronutrients.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="kebab-divider">🌯 🥙 🍢 🥙 🌯</div>
 
 </main>
 
 <footer>
+  <span class="footer-kebabs">🌯 🥙 🍢 🥙 🌯</span>
   <p>Made with 🌯 &nbsp;·&nbsp; Deployed on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
 </footer>
 
